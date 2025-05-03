@@ -1,3 +1,4 @@
+@ loop from 0..=9
 subi %q7, #8
 subi %q6, #16
 clr [%q7]
