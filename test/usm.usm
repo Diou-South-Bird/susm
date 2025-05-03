@@ -1,0 +1,8 @@
+subi %q7, #8
+subi %q6, #16
+clr [%q7]
+addi [%q7], #1
+cmpi [%q7], #9
+jne - #0x20
+str [%q7 - #8], [%q7]
+yld @ hintable nop to debug final state of program
