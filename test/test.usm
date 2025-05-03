@@ -1,0 +1,95 @@
+#! Shebang
+@ UTF-8 w/ BOM & CRLF to test input format
+
+@{
+b0 & b1 - lhs & rhs
+q9      - sum
+[q7]    - difference
+[q6]    - product
+}@
+
+@ Inputs
+stri %b0, #12
+stri %b1, #11
+swp %b0, %b1
+
+@ Calculations
+add %d9, %d0, %d1
+sub [%d6], %d0, %d1
+clr [%q6 - #0x8]
+mul [%d6 - #0x8], %d0, %d1
+subi %q6, %q6, #0x8
+
+@{ Xor Cipher }@
+@ Encrypt
+stri %b2, #0b11110011
+xor %b3, %b0, %b2
+xor %b4, %b1, %b2
+
+@ Decrypt
+xor %b3, %b3, %b2
+xor %b4, %b4, %b2
+
+@{ Alligator Voting System }@
+
+@ Hash Time!
+@ MurmurHash3's finalizer - murmurhash_scramble32
+
+@{
+# UMAX
+1 - #0xc0c0c - ff8ffe27
+2 - 0x64 - fdce5cea
+3 - 0o505 - fba1e729
+4 - 505 - fac6e0f3
+5 - 687 - f8406794
+}@
+
+@{
+# MIN
+1 - 0x010101
+2 - 0x90014
+3 - 0xfa46e8
+}@
+
+@ WEMBESHAQ - 1231231 - 7d1603
+
+stri %d0, #696969
+stri %d1, #0x010101
+
+shri %d2, %d0, #16
+shri %d3, %d1, #16
+
+xor %d0, %d0, %d2
+xor %d1, %d1, %d3
+
+muli %d0, %d0, #0x85ebca6b
+muli %d1, %d1, #0x85ebca6b
+
+shri %d2, %d0, #13
+shri %d3, %d1, #13
+
+xor %d0, %d0, %d2
+xor %d1, %d1, %d3
+
+muli %d0, %d0, #0xc2b2ae35
+muli %d1, %d1, #0xc2b2ae35
+
+shri %d2, %d0, #16
+shri %d3, %d1, #16
+
+xor %d0, %d0, %d2
+xor %d1, %d1, %d3
+
+clr %d2
+clr %d3
+
+min %d9, %d0, %d1
+
+@ 1 - gyatt or 2 - multishot
+stri %w0, #1
+stri %w1, #2
+cmp %w0, %w1
+
+@ 2 - multishot or 3 - ricochet
+stri %w0, #3
+cmp %w0, %w1
