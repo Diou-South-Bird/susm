@@ -1,2 +1,3 @@
+@ PROBLEM: this will segfault unintentionally
 subi %q6, #16
 stri [%o6], #0x00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00
